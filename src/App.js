@@ -1,3 +1,7 @@
+/**
+ * https://done.alibaba-inc.com/file/clm7RW0whKlI/dog11LpPrtYdN7kE/preview
+ * https://x6.antv.vision/zh
+ */
 import React, { Component } from 'react';
 import { Graph, Node, Edge, Shape } from '@antv/x6';
 import { TreeNode, TreeEdge, registerTreeComponents } from './treeComp.js';
@@ -77,26 +81,6 @@ export default class App extends Component {
       this.showModal();
     });
     const start = new Date().getTime();
-    // const nodes = drawData.nodes.map(({ leaf, ...metadata }) => {
-    //   if (metadata.shape === 'react-shape') {
-    //     return metadata;
-    //   }
-    //   const node = new TreeNode(metadata);
-    //   if (leaf) {
-    //     node.toggleButtonVisibility(leaf === false);
-    //   }
-    //   return node;
-    // });
-    // const edges = drawData.edges.map(
-    //   (edge) =>
-    //     new TreeEdge({
-    //       source: edge.source,
-    //       target: edge.target,
-    //     }),
-    // );
-
-    // graph.resetCells([...nodes, ...edges]);
-
     graph.unfreeze({
       progress({ done }) {
         if (done) {
