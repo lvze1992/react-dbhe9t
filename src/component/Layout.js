@@ -24,7 +24,7 @@ function cutTree(nodeTree) {
     return item;
   });
 }
-function calcLayout(nodeTree: any) {
+function calcLayout(nodeTree) {
   const drawData = { nodes: [], edges: [] };
   if (_.isEmpty(nodeTree)) {
     return drawData;
