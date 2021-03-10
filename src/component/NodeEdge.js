@@ -1,7 +1,7 @@
-import React, { Component } from 'react';
-import { Graph, Node, Edge, Shape } from '@antv/x6';
+import { Node, Shape } from '@antv/x6';
+import * as React from 'react';
 // 定义节点
-class MyComponent extends React.Component {
+class ReactSearchNode extends React.Component {
   shouldComponentUpdate() {
     const node = this.props.node;
     if (node) {
@@ -12,11 +12,12 @@ class MyComponent extends React.Component {
 
     return false;
   }
+
   render() {
     return (
       <div
         onClick={() => {
-          console.log('4444', this.props);
+          //   console.log('4444', this.props);
         }}
       >
         {this.props.text} React
@@ -28,7 +29,8 @@ class TreeNode extends Node {
   collapsed = false;
 
   postprocess() {
-    this.toggleCollapse(false);
+    // 节点初始化后会被调用
+    this.toggleCollapse(true);
   }
 
   isCollapsed() {
@@ -149,13 +151,21 @@ TreeEdge.config({
     line: {
       stroke: '#a0a0a0',
       strokeWidth: 1,
-      targetMarker: 'classic',
+      targetMarker: {
+        args: {
+          offset: -75,
+          open: true,
+          height: 9,
+          width: 0,
+        },
+        name: 'block',
+      },
     },
   },
 });
-const registerTreeComponents = (Node, Edge) => {
+const registerTreeComponents = (NodeInstance, EdgeInstance) => {
   // 注册
-  Node.registry.register('tree-node', TreeNode, true);
-  Edge.registry.register('tree-edge', TreeEdge, true);
+  NodeInstance.registry.register('tree-node', TreeNode, true);
+  EdgeInstance.registry.register('tree-edge', TreeEdge, true);
 };
-export { TreeNode, MyComponent, TreeEdge, registerTreeComponents };
+export { TreeNode, ReactSearchNode, TreeEdge, registerTreeComponents };
